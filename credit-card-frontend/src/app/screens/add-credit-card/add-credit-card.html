@@ -1,0 +1,112 @@
+<section class="add-card">
+  <header>
+    <h1>Add New Credit Card</h1>
+    <a routerLink="/home" class="link-back">Back</a>
+  </header>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+    <div class="grid">
+      <!-- Card number -->
+      <label>
+        <span>Card number *</span>
+        <input
+          formControlName="card_number"
+          inputmode="numeric" pattern="\d*"
+          (input)="digitsOnly($event, 'card_number')"
+          placeholder="7–16 digits"
+        />
+        @if (touchedInvalid('card_number')) {
+          <small class="error">
+            @if (c('card_number').errors?.['required']) { Required }
+            @if (c('card_number').errors?.['pattern'])  { Numbers only }
+            @if (c('card_number').errors?.['minlength']){ At least 7 digits }
+            @if (c('card_number').errors?.['maxlength']){ Up to 16 digits }
+          </small>
+        }
+      </label>
+
+      <label>
+        <span>Cardholder name *</span>
+        <input formControlName="cardholder_name" placeholder="Full name" />
+        @if (touchedInvalid('cardholder_name')) {
+          <small class="error">Required.</small>
+        }
+      </label>
+
+      <label>
+        <span>CSC (3 digits) *</span>
+        <input
+          formControlName="csc_code"
+          inputmode="numeric" pattern="\d{3}"
+          maxlength="3"
+          (input)="digitsOnly($event, 'csc_code')"
+          placeholder="123"
+        />
+        @if (touchedInvalid('csc_code')) {
+          <small class="error">
+            @if (c('csc_code').errors?.['required']) { Required. }
+            @if (c('csc_code').errors?.['pattern'])  { Must be exactly 3 digits. }
+          </small>
+        }
+      </label>
+
+      <label>
+        <span>Expiration month (1–12) *</span>
+        <input
+          formControlName="expiration_date_month"
+          type="number" min="1" max="12" step="1"
+          placeholder="MM"
+        />
+        @if (touchedInvalid('expiration_date_month')) {
+          <small class="error">
+            @if (c('expiration_date_month').errors?.['required']) { Required. }
+            @if (c('expiration_date_month').errors?.['min'] || c('expiration_date_month').errors?.['max']) {
+              Must be in range 1–12.
+            }
+          </small>
+        }
+      </label>
+
+      <label>
+        <span>Expiration year *</span>
+        <input
+          formControlName="expiration_date_year"
+          type="number" step="1"
+          placeholder="YYYY"
+        />
+        @if (touchedInvalid('expiration_date_year')) {
+          <small class="error">Required.</small>
+        }
+      </label>
+
+      <label>
+        <span>Issuer *</span>
+        <select formControlName="issuer">
+          <option value="" disabled selected>Select issuer</option>
+          <option value="Visa">Visa</option>
+          <option value="Mastercard">Mastercard</option>
+          <option value="Amex">Amex</option>
+          <option value="Discover">Discover</option>
+          <option value="Tarjeta Shopping">Tarjeta Shopping</option>
+          <option value="Nativa">Nativa</option>
+          <option value="Naranja">Naranja</option>
+          <option value="JCB">JCB</option>
+          <option value="Hipercard">Hipercard</option>
+          <option value="ELO">ELO</option>
+          <option value="China Union Pay">China Union Pay</option>
+          <option value="Cencosud">Cencosud</option>
+          <option value="Cabal">Cabal</option>
+          <option value="Argencard">Argencard</option>
+        </select>
+        @if (touchedInvalid('issuer')) {
+          <small class="error">Required.</small>
+        }
+      </label>
+    </div>
+
+    <div class="actions">
+      <button type="submit" [disabled]="form.invalid">Save card</button>
+      <a routerLink="/home" class="btn-secondary">Cancel</a>
+    </div>
+  </form>
+</section>

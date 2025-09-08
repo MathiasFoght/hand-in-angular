@@ -1,7 +1,6 @@
 .navbar {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
   width: 100%;
   height: 64px;
   background: #fff;
@@ -9,13 +8,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2rem 0 2rem;
+  padding: 0 2rem;
+  z-index: 1000;
 }
 
 .navbar-brand {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #4f46e5;
+  color: #1c38a8;
 }
 
 .navbar-links {
@@ -32,10 +32,10 @@
 }
 
 .navbar-links a:hover {
-  color: #4f46e5;
+  color: #1c38a8;
 }
 
 .navbar-links a.active {
-  border-bottom: 2px solid #4f46e5;
+  border-bottom: 2px solid #1c38a8;
   padding-bottom: 2px;
 }

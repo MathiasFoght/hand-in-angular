@@ -1,0 +1,21 @@
+<section class="card-details" aria-live="polite">
+  @if (card$ | async; as card) {
+    <header>
+      <h2>{{ card.cardholder_name }}</h2>
+    </header>
+
+    <p><strong>Card number:</strong> <span>{{ card.card_number }}</span></p>
+    <p><strong>Issuer:</strong> <span>{{ card.issuer }}</span></p>
+    <p><strong>CSC:</strong> <span>{{ card.csc_code }}</span></p>
+    <p>
+      <strong>Expires:</strong>
+      <span>{{ card.expiration_date_month }}/{{ card.expiration_date_year }}</span>
+    </p>
+
+    <button class="btn-danger" (click)="removeCard(card.card_number)">
+      Remove card
+    </button>
+  } @else {
+    <p>Card could not be found</p>
+  }
+</section>

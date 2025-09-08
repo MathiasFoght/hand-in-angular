@@ -10,5 +10,5 @@ import { Navbar } from './components/navbar/navbar';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('test');
+  protected readonly title = signal('Credit Card Management System');
 }

@@ -1,0 +1,42 @@
+<section class="landing-header">
+  <div class="landing-content">
+    <h1>Overview</h1>
+    <h3 class="subtitle">Manage your cards quickly and easily</h3>
+    <p class="subtitle"><br>
+      {{ service.cards().length }} cards · {{ groupedCards().length }} issuers
+    </p>
+  </div>
+</section>
+
+<div class="issuer-groups">
+  @for (group of groupedCards(); track group.issuer) {
+    <section class="issuer-group">
+      <div class="issuer-header">
+        <h3>
+          {{ group.issuer }}
+        </h3>
+        <span class="issuer-count">{{ group.cards.length }} card{{ group.cards.length === 1 ? '' : 's' }}</span>
+      </div>
+
+      <ul>
+        @for (card of group.cards; track card.card_number) {
+          <li>
+            <a [routerLink]="['/card', card.card_number]">
+              <strong>{{ card.cardholder_name }}</strong>
+              <span class="p-muted number-line">
+                {{ card.card_number }}<br>
+                {{ card.issuer }}
+              </span>
+            </a>
+          </li>
+        }
+      </ul>
+    </section>
+  } @empty {
+    <div class="empty-state">
+      <h3>No cards yet</h3>
+      <p class="p-muted">Get started by adding your first credit card.</p>
+      <a routerLink="/add-credit-card" class="cta-btn">Add credit card</a>
+    </div>
+  }
+</div>
