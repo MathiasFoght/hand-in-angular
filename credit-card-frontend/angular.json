@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "credit-card-frontend": {
+    "test": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -53,10 +53,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "credit-card-frontend:build:production"
+              "buildTarget": "test:build:production"
             },
             "development": {
-              "buildTarget": "credit-card-frontend:build:development"
+              "buildTarget": "test:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -81,5 +81,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "fa452952-80d3-47e5-9146-6761f7d90d1c"
   }
 }
