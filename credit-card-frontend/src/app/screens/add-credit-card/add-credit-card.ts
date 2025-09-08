@@ -70,6 +70,7 @@ export class AddCreditCard {
       },
       error: (err: any) => {
         console.error('POST /cards failed', err);
+        this.form.reset();
         alert('Could not create card. Please try again.');
       }
     });
