@@ -4,7 +4,7 @@ import { AsyncPipe } from '@angular/common';
 import { CardService } from '../../services/card-service';
 
 
-//TODO: Mangler en tilføje en list af transactions for det specifikke card
+//TODO: Mangler at tilføje en liste af transactions for det specifikke card
 
 
 @Component({
