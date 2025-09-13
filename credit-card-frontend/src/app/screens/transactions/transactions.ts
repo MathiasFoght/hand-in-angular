@@ -15,7 +15,7 @@ export class Transactions implements OnInit {
   private transactionService = inject(TransactionService);
 
   filterCardNumber: string = '';
-  addingTransaction: boolean = false; // true når vi tilføjer
+  addingTransaction: boolean = false;
 
   ngOnInit() {
     this.transactionService.getTransactions();
@@ -53,7 +53,7 @@ export class Transactions implements OnInit {
     this.transactionService.createTransaction(newTransaction).subscribe({
       next: (created: Transaction) => {
         this.transactionService.transactions.update((trans: Transaction[]) => [...trans, created]);
-        this.addingTransaction = false; // Tilbage til liste
+        this.addingTransaction = false;
       },
       error: (err: any) => console.error('Error creating transaction:', err)
     });

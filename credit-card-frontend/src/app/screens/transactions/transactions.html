@@ -1,10 +1,9 @@
 <div class="transactions-container">
   <h2>Transactions</h2>
 
-  <!-- Hvis man tilføjer, vis kun add-form -->
   <div *ngIf="addingTransaction">
     <div class="add-box">
-      <h3>Add Transaction</h3>
+      <h3 style="color: #dfe3f3">Add Transaction</h3>
       <form #transactionForm="ngForm" (ngSubmit)="addTransaction(transactionForm.value); transactionForm.resetForm()">
         <input type="text" name="card_number" placeholder="Card number" ngModel required />
         <input type="text" name="cardholder_name" placeholder="Cardholder name" ngModel required />
@@ -17,7 +16,6 @@
     </div>
   </div>
 
-  <!-- Ellers vis filter + tabel -->
   <div *ngIf="!addingTransaction">
     <div class="filter-add-container">
       <button class="toggle-add-btn" (click)="startAddTransaction()">Add Transaction</button>
