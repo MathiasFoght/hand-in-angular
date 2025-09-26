@@ -15,10 +15,25 @@
     <button class="btn-danger" (click)="removeCard(card.card_number)">
       Remove card
     </button>
+
+    <div class="transactionsContainer">
+      <h3>Completed Transactions</h3>
+
+      @for (t of transactionsForCard; track t.uid) {
+        <div class="transaction-row">
+          <p><strong>Amount:</strong> {{ t.amount | currency:t.currency }}</p>
+          <p><strong>Comment:</strong> {{ t.comment }}</p>
+          <p><strong>Date:</strong> {{ t.date | date:'short' }}</p>
+          <hr />
+        </div>
+      }
+
+      @if (transactionsForCard.length === 0) {
+        <p>No transactions for this card.</p>
+      }
+    </div>
   } @else {
     <p>Card could not be found</p>
   }
-  <div class="transactionsContainer">
-    <h1>Completed Transactions (mangler)</h1>
-  </div>
+
 </section>

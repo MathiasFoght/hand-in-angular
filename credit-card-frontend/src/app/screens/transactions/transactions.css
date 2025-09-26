@@ -1,0 +1,111 @@
+.transactions-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  font-family: Arial, sans-serif;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  background: radial-gradient(1200px 600px at 10% -20%, #5a7dff33, transparent),
+  radial-gradient(1000px 500px at 90% -10%, #8f9dff29, transparent),
+  linear-gradient(180deg, #121631, #0f1430);
+  border: 1px solid #242b55;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+}
+
+.transactions-container h2 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
+.filter-add-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.toggle-add-btn {
+  padding: 6px 12px;
+  border: none;
+  background-color: #5a7dff;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.toggle-add-btn:hover {
+  background-color: #3a4aa0;
+}
+
+.filter-input {
+  padding: 8px;
+  border: 1px solid #242b55;
+  border-radius: 6px;
+  width: 250px;
+  background-color: #0f1230;
+  color: #dfe3f3;
+}
+
+.transactions-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: linear-gradient(145deg, #161b36, #11152a);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.transactions-table th,
+.transactions-table td {
+  border: 1px solid #242b55;
+  padding: 10px;
+  text-align: left;
+  color: #e9ecf1;
+}
+
+.transactions-table th {
+  background: linear-gradient(145deg, #1f2650, #161b36);
+}
+
+.transactions-table tr:hover {
+  background: linear-gradient(145deg, #2a3b7a, #1f2650);
+}
+
+.add-box {
+  padding: 1rem;
+  border: 1px solid #242b55;
+  border-radius: 1rem;
+  background: linear-gradient(145deg, #161b36, #11152a);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  margin-top: 1rem;
+}
+
+.add-box input {
+  display: block;
+  margin: 0.5rem 0;
+  padding: 6px;
+  border: 1px solid #242b55;
+  border-radius: 6px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #0f1230;
+  color: #dfe3f3;
+}
+
+.add-box button {
+  padding: 6px 12px;
+  border: none;
+  background-color: #5a7dff;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.add-box button:hover {
+  background-color: #3a4aa0;
+}

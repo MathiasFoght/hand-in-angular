@@ -6,3 +6,12 @@ export interface CreditCard {
   expiration_date_month?: number;
   expiration_date_year?: number;
 }
+
+export interface Transaction {
+  credit_card: CreditCard;
+  amount: number;
+  comment: string;
+  date: number;
+  currency: string;
+  uid?: string;
+}

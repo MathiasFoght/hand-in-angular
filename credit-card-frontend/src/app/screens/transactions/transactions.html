@@ -1,1 +1,55 @@
-<p>transactions works!</p>
+<div class="transactions-container">
+
+  @if (addingTransaction) {
+    <div class="add-box">
+      <h3 style="color: #dfe3f3">Add Transaction</h3>
+      <form #transactionForm="ngForm" (ngSubmit)="addTransaction(transactionForm.value); transactionForm.resetForm()">
+        <input type="text" name="card_number" placeholder="Card number" ngModel required />
+        <input type="text" name="cardholder_name" placeholder="Cardholder name" ngModel required />
+        <input type="number" name="amount" placeholder="Amount" ngModel required />
+        <input type="text" name="comment" placeholder="Comment" ngModel />
+        <input type="text" name="currency" placeholder="Currency" ngModel required />
+        <button type="submit" style="margin-right: 8px">Confirm</button>
+        <button type="button" (click)="cancelAddTransaction()">Cancel</button>
+      </form>
+    </div>
+  } @else {
+    <div class="filter-add-container">
+      <button class="toggle-add-btn" (click)="startAddTransaction()">Add Transaction</button>
+      <input type="text" placeholder="Filter by card number..." [(ngModel)]="filterCardNumber" class="filter-input"/>
+    </div>
+
+    <table class="transactions-table">
+      <thead>
+      <tr>
+        <th>Card Number</th>
+        <th>Amount</th>
+        <th>Comment</th>
+        <th>Date</th>
+        <th>Currency</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+        @for (t of filteredTransactions; track t.uid) {
+          <tr>
+            <td>{{ t.credit_card.card_number }}</td>
+            <td>{{ t.amount | currency:t.currency }}</td>
+            <td>{{ t.comment }}</td>
+            <td>{{ t.date | date:'short' }}</td>
+            <td>{{ t.currency }}</td>
+            <td>
+              <button (click)="deleteTransaction(t.uid!)">Delete</button>
+            </td>
+          </tr>
+        }
+
+        @if (filteredTransactions.length === 0) {
+          <tr>
+            <td colspan="6">No transactions found.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</div>
