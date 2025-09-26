@@ -4,12 +4,6 @@ import {AsyncPipe, CurrencyPipe, DatePipe} from '@angular/common';
 import { CardService } from '../../services/card-service';
 import {TransactionService} from '../../services/transaction-service';
 import {Transaction} from '../../interfaces/models';
-import {map, Observable, tap} from 'rxjs';
-import {Transactions} from '../../screens/transactions/transactions';
-
-
-//TODO: Mangler at tilføje en liste af transactions for det specifikke card
-
 
 @Component({
   selector: 'app-credit-card-details',

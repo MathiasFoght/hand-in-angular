@@ -13,7 +13,6 @@ import { CreditCard } from '../../interfaces/models';
 export class Home {
   service = inject(CardService);
 
-  // Grupper kort pr. issuer
   groupedCards = computed(() => {
     const map = new Map<string, CreditCard[]>();
 
@@ -23,7 +22,6 @@ export class Home {
       map.get(key)!.push(c);
     }
 
-    // Sorter issuer navne i rækkefølge
     const groups = Array.from(map, ([issuer, cards]) => ({ issuer, cards }));
     groups.sort((a, b) => a.issuer.localeCompare(b.issuer, 'da'));
 

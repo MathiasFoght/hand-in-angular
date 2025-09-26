@@ -21,14 +21,14 @@ export class AddCreditCard {
   form = this.fb.group({
     card_number: ['', [
       Validators.required,
-      Validators.pattern(/^\d+$/),      // kun tal er tilladt
+      Validators.pattern(/^\d+$/),
       Validators.minLength(7),
       Validators.maxLength(16)
     ]],
     cardholder_name: ['', [Validators.required]],
     csc_code: ['', [
       Validators.required,
-      Validators.pattern(/^\d{3}$/)     // præcis 3 cifre er tilladt
+      Validators.pattern(/^\d{3}$/)
     ]],
     expiration_date_month: [null, [
       Validators.required,
