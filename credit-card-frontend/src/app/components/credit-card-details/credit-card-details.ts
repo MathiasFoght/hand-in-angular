@@ -4,11 +4,16 @@ import {AsyncPipe, CurrencyPipe, DatePipe} from '@angular/common';
 import { CardService } from '../../services/card-service';
 import {TransactionService} from '../../services/transaction-service';
 import {Transaction} from '../../interfaces/models';
+import {MaskCardNumberPipe} from '../../custom/mask-card-number-pipe';
 
 @Component({
   selector: 'app-credit-card-details',
   standalone: true,
-  imports: [AsyncPipe, CurrencyPipe, DatePipe, DatePipe],
+  imports: [
+    AsyncPipe,
+    CurrencyPipe,
+    DatePipe,
+    MaskCardNumberPipe],
   templateUrl: './credit-card-details.html',
   styleUrl: './credit-card-details.css',
 })

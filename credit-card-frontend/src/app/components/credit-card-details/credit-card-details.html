@@ -4,7 +4,8 @@
       <h2>{{ card.cardholder_name }}</h2>
     </header>
 
-    <p><strong>Card number:</strong> <span>{{ card.card_number }}</span></p>
+
+    <p><strong>Card number:</strong> <span>{{ card.card_number | maskCardNumber}}</span></p>
     <p><strong>Issuer:</strong> <span>{{ card.issuer }}</span></p>
     <p><strong>CSC:</strong> <span>{{ card.csc_code }}</span></p>
     <p>
