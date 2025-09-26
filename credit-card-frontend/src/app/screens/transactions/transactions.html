@@ -1,7 +1,6 @@
 <div class="transactions-container">
-  <h2>Transactions</h2>
 
-  <div *ngIf="addingTransaction">
+  @if (addingTransaction) {
     <div class="add-box">
       <h3 style="color: #dfe3f3">Add Transaction</h3>
       <form #transactionForm="ngForm" (ngSubmit)="addTransaction(transactionForm.value); transactionForm.resetForm()">
@@ -14,9 +13,7 @@
         <button type="button" (click)="cancelAddTransaction()">Cancel</button>
       </form>
     </div>
-  </div>
-
-  <div *ngIf="!addingTransaction">
+  } @else {
     <div class="filter-add-container">
       <button class="toggle-add-btn" (click)="startAddTransaction()">Add Transaction</button>
       <input type="text" placeholder="Filter by card number..." [(ngModel)]="filterCardNumber" class="filter-input"/>
@@ -34,17 +31,25 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let t of filteredTransactions">
-        <td>{{ t.credit_card.card_number }}</td>
-        <td>{{ t.amount | currency:t.currency }}</td>
-        <td>{{ t.comment }}</td>
-        <td>{{ t.date | date:'short' }}</td>
-        <td>{{ t.currency }}</td>
-        <td>
-          <button (click)="deleteTransaction(t.uid!)">Delete</button>
-        </td>
-      </tr>
+        @for (t of filteredTransactions; track t.uid) {
+          <tr>
+            <td>{{ t.credit_card.card_number }}</td>
+            <td>{{ t.amount | currency:t.currency }}</td>
+            <td>{{ t.comment }}</td>
+            <td>{{ t.date | date:'short' }}</td>
+            <td>{{ t.currency }}</td>
+            <td>
+              <button (click)="deleteTransaction(t.uid!)">Delete</button>
+            </td>
+          </tr>
+        }
+
+        @if (filteredTransactions.length === 0) {
+          <tr>
+            <td colspan="6">No transactions found.</td>
+          </tr>
+        }
       </tbody>
     </table>
-  </div>
+  }
 </div>
