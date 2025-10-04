@@ -1,6 +1,7 @@
 # Hand-in-1 
 ### 10/10-2025
 ### SWAFE 2025
+### Group 30
 
 ## Angular - Credit Card Management System
 ### How to run
