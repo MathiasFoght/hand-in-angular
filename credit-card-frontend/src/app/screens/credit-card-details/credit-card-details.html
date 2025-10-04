@@ -1,0 +1,33 @@
+<section class="card-details" aria-live="polite">
+  @if (card$ | async; as card) {
+    <header>
+      <h2>{{ card.cardHolderName }}</h2>
+    </header>
+
+    <p><strong>Card number:</strong> <span>{{ card.cardNumber }}</span></p>
+    <p><strong>Issuer:</strong> <span>{{ card.issuer }}</span></p>
+    <p><strong>CSC:</strong> <span>{{ card.cscCode }}</span></p>
+    <p><strong>Expires:</strong> {{ card.expirationMonth }}/{{ card.expirationYear }}</p>
+
+    <button class="btn-danger" (click)="removeCard(card.cardNumber)">Remove card</button>
+
+    <div class="transactionsContainer">
+      <h3>Completed Transactions</h3>
+
+      @for (t of card.transactions; track t.uid || t.transactionDate + t.amount + t.cardNumber) {
+        <div class="transaction-row">
+          <p><strong>Amount:</strong> {{ t.amount | currency:t.currencyCode }}</p>
+          <p><strong>Comment:</strong> {{ t.comment }}</p>
+          <p><strong>Date:</strong> {{ t.transactionDate | date:'short' }}</p>
+          <hr />
+        </div>
+      }
+
+      @if (card.transactions.length === 0) {
+        <p>No transactions for this card.</p>
+      }
+    </div>
+  } @else {
+    <p>Card could not be found</p>
+  }
+</section>

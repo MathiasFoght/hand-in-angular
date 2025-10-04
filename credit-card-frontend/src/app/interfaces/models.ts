@@ -1,17 +1,18 @@
 export interface CreditCard {
-  card_number: string;
-  cardholder_name: string;
+  cardNumber: number;
+  cardHolderName: string;
   issuer: string;
-  csc_code?: string;
-  expiration_date_month?: number;
-  expiration_date_year?: number;
+  cscCode: number;
+  expirationMonth: number;
+  expirationYear: number;
+  transactions: Transaction[];
 }
 
 export interface Transaction {
-  credit_card: CreditCard;
+  uid: string;
+  cardNumber: number;
   amount: number;
+  currencyCode: string;
+  transactionDate: string;
   comment: string;
-  date: number;
-  currency: string;
-  uid?: string;
 }

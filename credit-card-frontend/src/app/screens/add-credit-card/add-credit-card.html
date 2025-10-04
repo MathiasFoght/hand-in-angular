@@ -10,25 +10,25 @@
       <label>
         <span>Card number *</span>
         <input
-          formControlName="card_number"
+          formControlName="cardNumber"
           inputmode="numeric" pattern="\d*"
-          (input)="digitsOnly($event, 'card_number')"
+          (input)="digitsOnly($event, 'cardNumber')"
           placeholder="7–16 digits"
         />
-        @if (touchedInvalid('card_number')) {
+        @if (touchedInvalid('cardNumber')) {
           <small class="error">
-            @if (c('card_number').errors?.['required']) { Required }
-            @if (c('card_number').errors?.['pattern'])  { Numbers only }
-            @if (c('card_number').errors?.['minlength']){ At least 7 digits }
-            @if (c('card_number').errors?.['maxlength']){ Up to 16 digits }
+            @if (c('cardNumber').errors?.['required']) { Required }
+            @if (c('cardNumber').errors?.['pattern'])  { Numbers only }
+            @if (c('cardNumber').errors?.['minlength']){ At least 7 digits }
+            @if (c('cardNumber').errors?.['maxlength']){ Up to 16 digits }
           </small>
         }
       </label>
 
       <label>
         <span>Cardholder name *</span>
-        <input formControlName="cardholder_name" placeholder="Full name" />
-        @if (touchedInvalid('cardholder_name')) {
+        <input formControlName="cardHolderName" placeholder="Full name" />
+        @if (touchedInvalid('cardHolderName')) {
           <small class="error">Required.</small>
         }
       </label>
@@ -36,16 +36,16 @@
       <label>
         <span>CSC (3 digits) *</span>
         <input
-          formControlName="csc_code"
+          formControlName="cscCode"
           inputmode="numeric" pattern="\d{3}"
           maxlength="3"
-          (input)="digitsOnly($event, 'csc_code')"
+          (input)="digitsOnly($event, 'cscCode')"
           placeholder="123"
         />
-        @if (touchedInvalid('csc_code')) {
+        @if (touchedInvalid('cscCode')) {
           <small class="error">
-            @if (c('csc_code').errors?.['required']) { Required. }
-            @if (c('csc_code').errors?.['pattern'])  { Must be exactly 3 digits. }
+            @if (c('cscCode').errors?.['required']) { Required. }
+            @if (c('cscCode').errors?.['pattern'])  { Must be exactly 3 digits. }
           </small>
         }
       </label>
@@ -53,14 +53,14 @@
       <label>
         <span>Expiration month (1–12) *</span>
         <input
-          formControlName="expiration_date_month"
+          formControlName="expirationMonth"
           type="number" min="1" max="12" step="1"
           placeholder="MM"
         />
-        @if (touchedInvalid('expiration_date_month')) {
+        @if (touchedInvalid('expirationMonth')) {
           <small class="error">
-            @if (c('expiration_date_month').errors?.['required']) { Required. }
-            @if (c('expiration_date_month').errors?.['min'] || c('expiration_date_month').errors?.['max']) {
+            @if (c('expirationMonth').errors?.['required']) { Required. }
+            @if (c('expirationMonth').errors?.['min'] || c('expirationMonth').errors?.['max']) {
               Must be in range 1–12.
             }
           </small>
@@ -70,11 +70,11 @@
       <label>
         <span>Expiration year *</span>
         <input
-          formControlName="expiration_date_year"
+          formControlName="expirationYear"
           type="number" step="1"
           placeholder="YYYY"
         />
-        @if (touchedInvalid('expiration_date_year')) {
+        @if (touchedInvalid('expirationYear')) {
           <small class="error">Required.</small>
         }
       </label>

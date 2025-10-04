@@ -4,11 +4,10 @@
     <div class="add-box">
       <h3 style="color: #dfe3f3">Add Transaction</h3>
       <form #transactionForm="ngForm" (ngSubmit)="addTransaction(transactionForm.value); transactionForm.resetForm()">
-        <input type="text" name="card_number" placeholder="Card number" ngModel required />
-        <input type="text" name="cardholder_name" placeholder="Cardholder name" ngModel required />
-        <input type="number" name="amount" placeholder="Amount" ngModel required />
-        <input type="text" name="comment" placeholder="Comment" ngModel />
-        <input type="text" name="currency" placeholder="Currency" ngModel required />
+        <input type="number" name="card_number" placeholder="Card number (e.g., 1234567890123456)" ngModel required />
+        <input type="number" name="amount" placeholder="Amount (e.g., 100)" ngModel required min="0.01" step="0.01" />
+        <input type="text" name="currency" placeholder="Currency code (e.g., DKK, USD, EUR)" ngModel required maxlength="3" />
+        <input type="text" name="comment" placeholder="Comment (optional)" ngModel />
         <button type="submit" style="margin-right: 8px">Confirm</button>
         <button type="button" (click)="cancelAddTransaction()">Cancel</button>
       </form>
@@ -31,13 +30,13 @@
       </tr>
       </thead>
       <tbody>
-        @for (t of filteredTransactions; track t.uid) {
+        @for (t of filteredTransactions; track t.uid || t.transactionDate + t.amount + t.cardNumber) {
           <tr>
-            <td>{{ t.credit_card.card_number }}</td>
-            <td>{{ t.amount | currency:t.currency }}</td>
+            <td>{{ t.cardNumber }}</td>
+            <td>{{ t.amount | currency:t.currencyCode }}</td>
             <td>{{ t.comment }}</td>
-            <td>{{ t.date | date:'short' }}</td>
-            <td>{{ t.currency }}</td>
+            <td>{{ t.transactionDate | date:'short' }}</td>
+            <td>{{ t.currencyCode }}</td>
             <td>
               <button (click)="deleteTransaction(t.uid!)">Delete</button>
             </td>

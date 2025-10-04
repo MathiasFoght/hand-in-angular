@@ -19,12 +19,12 @@
       </div>
 
       <ul>
-        @for (card of group.cards; track card.card_number) {
+        @for (card of group.cards; track card.cardNumber) {
           <li>
-            <a [routerLink]="['/card', card.card_number]">
-              <strong>{{ card.cardholder_name }}</strong>
+            <a [routerLink]="['/card', card.cardNumber]">
+              <strong>{{ card.cardHolderName }}</strong>
               <span class="p-muted number-line">
-                {{ card.card_number }}<br>
+                {{ card.cardNumber | maskCardNumber }}<br>
                 {{ card.issuer }}
               </span>
             </a>

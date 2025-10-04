@@ -1,0 +1,19 @@
+<div class="login-container">
+  <h2>Login</h2>
+
+  <form (ngSubmit)="login()">
+    <input
+      id="prefix"
+      type="text"
+      [(ngModel)]="prefix"
+      name="prefix"
+      required
+      placeholder="Prefix here"
+    />
+    <button type="submit">Login</button>
+  </form>
+
+  @if (error) {
+    <p class="error">{{ error }}</p>
+  }
+</div>

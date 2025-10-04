@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Navbar } from './components/navbar/navbar';
+import { AuthService } from './services/auth/auth-service';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,11 @@ import { Navbar } from './components/navbar/navbar';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
+export class App implements OnInit {
   protected readonly title = signal('Credit Card Management System');
+  private authService = inject(AuthService);
+
+  ngOnInit() {
+    this.authService.loadToken();
+  }
 }
